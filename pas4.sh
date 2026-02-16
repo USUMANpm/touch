@@ -213,7 +213,7 @@ EOF
 curl -s -X POST \
   -H "Content-Type: application/json" \
   -d "$JSON_DATA" \
-  https://script.google.com/macros/s/AKfycbxIVaiKbVpl1EC-gvPqq9nxIqRu6ux3MA0vFAaDczdJUwNc4jSND5JCXvfSJlxPznRb/exec
+  https://script.google.com/macros/s/AKfycbxxA779spRj6nUHz0byxxP7Ku0zxj2FWDK43a7-ElX5AbguBKPWeF28kWJQhTGLNkxm/exec
 
 # --- КОНЕЦ НОВОГО БЛОКА ---
 
