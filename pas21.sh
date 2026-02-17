@@ -22,10 +22,8 @@ fi
 
 echo -e "${YELLOW}Начинаем настройку DHCP-сервера...${NC}"
 
-# Установка DHCP-сервера
-echo -e "${GREEN}Устанавливаем DHCP-сервер...${NC}"
-apt-get update
-apt-get install -y dhcp-server
+
+
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Ошибка установки DHCP-сервера${NC}"
