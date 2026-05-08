@@ -3,7 +3,7 @@
 apt-get update
 
 if ! id sshuser >/dev/null 2>&1; then
-    useradd -u 2026 sshuser
+    sudo useradd -u 2026 sshuser
 fi
 echo "sshuser:P@ssw0rd" | sudo chpasswd
 sudo usermod -aG wheel sshuser || true
