@@ -2,9 +2,7 @@
 
 apt-get update
 
-if ! id sshuser >/dev/null 2>&1; then
-    sudo useradd -u 2026 sshuser
-fi
+sudo useradd -u 2026 sshuser
 echo "sshuser:P@ssw0rd" | sudo chpasswd
 sudo usermod -aG wheel sshuser || true
 grep -q "^sshuser ALL=(ALL:ALL) NOPASSWD: ALL$" /etc/sudoers || echo "sshuser ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
