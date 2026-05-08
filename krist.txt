@@ -1,0 +1,55 @@
+﻿
+#>---------------------------------- Параметры конфигурации ----------------------------------<#
+
+#///::::::::::::::::::::::::::| Конфигурации ролей прав доступа |:::::::::::::::::::::::::::\\\#
+config_access_roles[STUDLB]='Pool.Audit VM.Audit VM.Console VM.PowerMgmt'
+config_access_roles[STUDLB-SDN]='VM.Config.Network'
+#///%%%%%%%%%%%%%%%%%%% Конфигурации шаблонов настроек виртуальных машин %%%%%%%%%%%%%%%%%%%\\\#
+config_templates[Alt-Workstation]='
+templ_descr = Шаблон ОС Альт Рабочая Станция 11
+os_descr = Альт Рабочая Станция 11
+tags = alt_workstation_11
+ostype = l26
+machine = q35
+cpu = kvm64
+cores = 2
+memory = 2048
+agent = 1
+serial0 = socket
+scsihw = virtio-scsi-single
+boot_disk_0 = /root/pro/alt-w.qcow2
+boot_disk_0_opt = { iothread=1 }
+'
+#///=========================== Конфигурация варианта установки ===========================\\\#
+config_stand_1_var[stand_config]='
+description = work
+group_display_desc = Лабораторный стенд №1
+pool_name = lab_stand-{0}
+pool_desc = Стенд лаб работы-{0}
+pool_access_role = STUDLB
+access_user_name = Nik-{0}
+access_user_desc = Учетная запись студента Nik-{0}
+deployment_condition = NET_ACL_SUPPORT = true
+'
+config_stand_1_var[vm_1]='
+name = CLI1
+config_template = Alt-Workstation
+startup = order=4,up=8,down=30
+network_6 = : labCLI
+access_role = STUDLB-SDN
+'
+config_stand_1_var[vm_2]='
+name = CLI2
+config_template = Alt-Workstation
+startup = order=4,up=8,down=30
+network_6 = : labCLI
+access_role = STUDLB-SDN
+'
+config_stand_1_var[vm_3]='
+name = CLI3
+config_template = Alt-Workstation
+startup = order=4,up=8,down=30
+network_6 = : labCLI
+access_role = STUDLB-SDN
+'
+#<------------------------------ Конец параметров конфигурации ------------------------------->#
